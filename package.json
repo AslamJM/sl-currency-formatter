@@ -1,0 +1,20 @@
+{
+  "name": "sl-currency-formatter",
+  "version": "1.0.0",
+  "description": "A currency formatter for the Srilankan Rupee",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup index.ts --format cjs,esm --dts",
+    "lint": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "srilankan",
+    "rupee",
+    "currency-formatter"
+  ],
+  "author": "AslamJM",
+  "license": "ISC"
+}
