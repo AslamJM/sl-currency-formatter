@@ -70,8 +70,7 @@ function addComma(value: string) {
 }
 
 function getPrefixForLanguage(lang: "english" | "tamil" | "sinhala") {
-    //TODO find sinhala unicide and add .
-    return lang === "english" ? "Rs." : lang === "tamil" ? "\u0BF9." : "Ru."
+    return lang === "english" ? "Rs." : lang === "tamil" ? "\u0BF9." : "\u0DBB\u0DD0"
 
 }
 
@@ -83,3 +82,4 @@ function createOptionsFactory(options: Options): Options {
     return { ...defaultOptions, ...options }
 }
 
+export default formatSLR
