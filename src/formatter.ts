@@ -24,6 +24,7 @@ const defaultOptions: Options = {
 export function formatSLR(value: string | number, options: Options = defaultOptions): string {
 
 
+
     if (typeof value === "string" && isNaN(Number(value))) {
         return "Invalid Number"
     }
@@ -37,7 +38,7 @@ export function formatSLR(value: string | number, options: Options = defaultOpti
     if (options.commas) {
         if (value.includes(".")) {
             const [tens, cents] = value.split(".")
-            value = addComma(tens) + "." + cents
+            value = addComma(tens) + "." + (cents.length === 1 ? cents + "0" : cents)
         } else {
             value = addComma(value)
         }
@@ -70,7 +71,7 @@ function addComma(value: string) {
 }
 
 function getPrefixForLanguage(lang: "english" | "tamil" | "sinhala") {
-    return lang === "english" ? "Rs." : lang === "tamil" ? "\u0BF9." : "\u0DBB\u0DD0"
+    return lang === "english" ? "Rs." : lang === "tamil" ? "\u0BF9." : "\u0DBB\u0DD0."
 
 }
 
