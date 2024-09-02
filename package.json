@@ -1,6 +1,6 @@
 {
   "name": "sl-currency-formatter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A currency formatter for the Srilankan Rupee",
   "repository": "https://github.com/AslamJM/sl-currency-formatter",
   "main": "dist/index.js",
