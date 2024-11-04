@@ -27,7 +27,7 @@ var defaultOptions = {
 };
 function formatSLR(value, options = defaultOptions) {
   if (typeof value === "string" && isNaN(Number(value))) {
-    return "Invalid Number";
+    throw new Error("Invalid Number");
   }
   if (typeof value === "number") {
     value = String(value);
