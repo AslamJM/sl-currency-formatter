@@ -23,10 +23,8 @@ const defaultOptions: Options = {
 
 export function formatSLR(value: string | number, options: Options = defaultOptions): string {
 
-
-
     if (typeof value === "string" && isNaN(Number(value))) {
-        return "Invalid Number"
+        throw new Error("Invalid Number")
     }
 
     if (typeof value === 'number') {
