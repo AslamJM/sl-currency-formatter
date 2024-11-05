@@ -6,6 +6,7 @@ type Options = {
     suffix?: boolean;
     prefixCode?: string;
     suffixCode?: string;
+    leadingZero?: boolean;
 };
 declare function formatSLR(value: string | number, options?: Options): string;
 

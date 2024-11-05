@@ -46,13 +46,20 @@ var defaultOptions = {
   suffix: false,
   lang: "english",
   prefixCode: "Rs.",
-  suffixCode: " /="
+  suffixCode: " /=",
+  leadingZero: true
 };
+function isDecimal(n) {
+  return n % 1 !== 0;
+}
 function formatSLR(value, options = defaultOptions) {
   if (typeof value === "string" && isNaN(Number(value))) {
     throw new Error("Invalid Number");
   }
   if (typeof value === "number") {
+    if (isDecimal(value)) {
+      value = value.toFixed(2);
+    }
     value = String(value);
   }
   options = createOptionsFactory(options);
@@ -71,6 +78,14 @@ function formatSLR(value, options = defaultOptions) {
   } else {
     if (value.includes(".")) {
       value = value.split(".")[0];
+    }
+  }
+  if (options.leadingZero) {
+    if (value.includes(".")) {
+      const [dec, cent] = value.split(".");
+      if (dec.length === 1) {
+        value = `0${dec}.${cent}`;
+      }
     }
   }
   if (options.prefix) {
