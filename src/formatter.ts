@@ -6,7 +6,7 @@ type Options = {
     suffix?: boolean
     prefixCode?: string
     suffixCode?: string
-
+    leadingZero?: boolean
 
 }
 
@@ -17,7 +17,12 @@ const defaultOptions: Options = {
     suffix: false,
     lang: 'english',
     prefixCode: "Rs.",
-    suffixCode: " /="
+    suffixCode: " /=",
+    leadingZero: true
+}
+
+function isDecimal(n: number) {
+    return n % 1 !== 0;
 }
 
 
@@ -28,6 +33,9 @@ export function formatSLR(value: string | number, options: Options = defaultOpti
     }
 
     if (typeof value === 'number') {
+        if (isDecimal(value)) {
+            value = value.toFixed(2)
+        }
         value = String(value)
     }
 
@@ -49,6 +57,16 @@ export function formatSLR(value: string | number, options: Options = defaultOpti
     } else {
         if (value.includes(".")) {
             value = value.split(".")[0]
+        }
+    }
+
+    if (options.leadingZero) {
+        if (value.includes(".")) {
+            const [dec, cent] = value.split(".")
+
+            if (dec.length === 1) {
+                value = `0${dec}.${cent}`
+            }
         }
     }
 
