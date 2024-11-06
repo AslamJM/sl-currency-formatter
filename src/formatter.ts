@@ -52,7 +52,7 @@ export function formatSLR(value: string | number, options: Options = defaultOpti
                     cents = cents
                     break
                 default:
-                    cents = Math.round(Number(cents) / 100).toString()
+                    cents = cents.slice(0, 2)
             }
             value = dec + "." + cents
         }
