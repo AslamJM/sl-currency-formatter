@@ -38,6 +38,24 @@ function formatSLR(value, options = defaultOptions) {
       value = value.toFixed(2);
     }
     value = String(value);
+  } else {
+    if (value.includes(".")) {
+      let [dec, cents] = value.split(".");
+      switch (cents.length) {
+        case 0:
+          cents = "00";
+          break;
+        case 1:
+          cents = "0" + cents;
+          break;
+        case 2:
+          cents = cents;
+          break;
+        default:
+          cents = cents.slice(0, 2);
+      }
+      value = dec + "." + cents;
+    }
   }
   options = createOptionsFactory(options);
   if (options.commas) {
